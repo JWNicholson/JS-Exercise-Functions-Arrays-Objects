@@ -106,10 +106,6 @@ function makeSmartPerson(name) {
 }
 
 
-
-
-
-
 /*
 // ⭐️ Example Test Data ⭐️
 
@@ -166,6 +162,11 @@ function get3rdCar(inventory) {
 */
 function getCarInfoByIndex(inventory, index) {
   /* code here */
+  const carInfo = inventory.find((item, index) => {
+    return index === 0;
+  });
+
+  return `This is a ${carInfo.car_make} ${carInfo.car_model}.`
 }
 
 /**
@@ -179,9 +180,14 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
+function getLastCarInfo(inventory) {
   /* code here */
+const lastCar = inventory[inventory.length -1];
+  
+  return `This is a ${lastCar.car_make} ${lastCar.car_model}`;
 }
+
+
 
 /**
  * ### Challenge `getCarInfoById`
@@ -195,8 +201,12 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
+function getCarInfoById(inventory, id) {
   /* code here */
+  const carInfoById = inventory.find((item, id) => {
+    return id - 1;
+  });
+  return `This is a ${carInfoById.car_make} ${carInfoById.car_model}`;
 }
 
 /**
