@@ -215,21 +215,21 @@ function getCarInfoById(inventory, id) {
  * @instructions
  * sortCarInventory takes a single argument:
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
+ * arr
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
- function sortCarInventory(inventory) {
+ function sortCarInventory(arr) {
 //   /* code here */
-inventory.sort(function(a, b) {
-  var modelA = a.car_model.toUpperCase(); // ignore upper and lowercase
-  var modelB = b.car_model.toUpperCase(); // ignore upper and lowercase
-  if (modelA < modelB) {
-    return -1;
-  }
-  if (modelA > modelB) {
-    return 1;
-  }
+arr.sort(function(a,b){
+  let carModelA = a.car_model.toUpperCase();
+  let carModelB = b.car_model.toUpperCase();
+
+  if(carModelA < carModelB){return -1;}
+  if(carModelA > carModelB){return 1;}
+
   return 0;
 });
+
  } 
  
   
@@ -265,16 +265,25 @@ function getModelYears(inventory) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(inventory, max_year) {
+function getOlderCars(inventory,year1, year2) {
   /* code here */
   let olderCars = [];
+  let newerCars = [];
+  
   for (let i =0; i < inventory.length; i ++){
-    if (inventory[i]['car_year'] < max_year){
-      olderCars.push('inventory[i]');
+    if (inventory[i]['car_year'] >= year1 && inventory[i]['car_year']<= year2){
+      olderCars.push(inventory[i]);
+    }
+
+    if (inventory[i]['car_year'] >= year2){
+      newerCars.push(inventory[i]);
     }
   }
   return olderCars;
+  return newerCars;
+ 
 }
+
 
 /**
  * ### Challenge `getGermanCars`
@@ -287,14 +296,14 @@ function getOlderCars(inventory, max_year) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(inventory) {
+function getGermanCars(arr) {
   /* code here */
   let deutschAuto=[];
   
-  for (let i = 0; i > inventory.length; i++){
+  for (let i = 0; i > arr.length; i++){
    
-    if (inventory[i].car_make === "Audi" || inventory[i].car_make === "Mercedes-Benz" || inventory[i].car_make === "Volkswagon" || inventory[i].car_make === "BMW"){
-      deutschAuto.push(inventory[i]);
+    if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagon" || arr[i].car_make === "BMW"){
+      deutschAuto.push(arr[i]);
     }
   }
   return deutschAuto;
