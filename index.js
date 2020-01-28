@@ -203,10 +203,13 @@ const lastCar = inventory[inventory.length -1];
 */
 function getCarInfoById(inventory, id) {
   /* code here */
-  const carInfoById = inventory.find((item, id) => {
-    return id - 1;
-  });
-  return `This is a ${carInfoById.car_make} ${carInfoById.car_model}`;
+  // const carInfoById = inventory.find((item, id) => {
+  //   return id - 1;
+  // });
+  // return `This is a ${carInfoById.car_make} ${carInfoById.car_model}`;
+
+  id--
+  return `This is a ${inventory[id].car_make} ${inventory[id].car_model}`;
 }
 
 /**
@@ -265,21 +268,20 @@ function getModelYears(inventory) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(inventory,year1) {
+function getOlderCars(inventory,year) {
   /* code here */
   let olderCars = [];
-  // let newerCars = [];
+ 
   
   for (let i =0; i < inventory.length; i ++){
     //if year matches year1 or earlier
-    if (inventory[i]['car_year'] <= year1){
+    if (inventory[i]['car_year'] <= year){
       olderCars.push(inventory[i]);
     }
 
   }
   return olderCars;
-  // return newerCars;
- 
+  
 }
 
 
@@ -298,17 +300,18 @@ function getGermanCars(arr) {
   /* code here */
   let deutschAuto=[];
   
-  for (let i = 0; i > arr.length; i++){
+  for (let i = 0; i < arr.length; i++){
    
-    if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagen" || arr[i].car_make === "BMW"){
+    if (arr[i].car_make === "Audi" || 
+      arr[i].car_make === "Mercedes-Benz" || 
+      arr[i].car_make === "Volkswagen" || 
+      arr[i].car_make === "BMW"){
       deutschAuto.push(arr[i]);
-    }
-
-   
+    } 
   }
   return deutschAuto;
- 
 }
+
 
 /**
  * ### Challenge refactor to arrow functions
