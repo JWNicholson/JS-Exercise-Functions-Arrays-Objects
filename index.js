@@ -219,14 +219,17 @@ function getCarInfoById(inventory, id) {
 */
  function sortCarInventory(inventory) {
 //   /* code here */
- 
- inventory.sort(a, b) {
-   if(a.car_model < b.car_model){return -1}
-   if(a.car_model  > b.car_model){return 1}
- 
- }
- 
- return 0;
+inventory.sort(function(a, b) {
+  var modelA = a.car_model.toUpperCase(); // ignore upper and lowercase
+  var modelB = b.car_model.toUpperCase(); // ignore upper and lowercase
+  if (modelA < modelB) {
+    return -1;
+  }
+  if (modelA > modelB) {
+    return 1;
+  }
+  return 0;
+});
  } 
  
   
@@ -262,11 +265,11 @@ function getModelYears(inventory) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(inventory, year) {
+function getOlderCars(inventory, max_year) {
   /* code here */
   let olderCars = [];
   for (let i =0; i < inventory.length; i ++){
-    if (inventory[i]['car_year'] < year){
+    if (inventory[i]['car_year'] < max_year){
       olderCars.push('inventory[i]');
     }
   }
@@ -315,9 +318,9 @@ function getGermanCars(inventory) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a,b) => {return a + b} // code here!
+const addFive = (num) => {return num +5} // code here!
+const argTimesTwo = (num) => {return num * 2} // code here!
 
 /**
  * ### Challenge `carMaker`
