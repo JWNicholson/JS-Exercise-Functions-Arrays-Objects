@@ -215,21 +215,21 @@ function getCarInfoById(inventory, id) {
  * @instructions
  * sortCarInventory takes a single argument:
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
- * arr
+ * //array of objects,
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
+ * car_model is a string
 */
  function sortCarInventory(arr) {
 //   /* code here */
-arr.sort(function(a,b){
-  let carModelA = a.car_model.toUpperCase();
-  let carModelB = b.car_model.toUpperCase();
 
-  if(carModelA < carModelB){return -1;}
-  if(carModelA > carModelB){return 1;}
+arr.sort(function(a,b){
+  
+  if(a.car_model > b.car_model){return 1;}
+  if (a.car_model < b.car_model){return -1;}
 
   return 0;
 });
-
+  return arr;
  } 
  
   
@@ -265,22 +265,20 @@ function getModelYears(inventory) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(inventory,year1, year2) {
+function getOlderCars(inventory,year1) {
   /* code here */
   let olderCars = [];
-  let newerCars = [];
+  // let newerCars = [];
   
   for (let i =0; i < inventory.length; i ++){
-    if (inventory[i]['car_year'] >= year1 && inventory[i]['car_year']<= year2){
+    //if year matches year1 or earlier
+    if (inventory[i]['car_year'] <= year1){
       olderCars.push(inventory[i]);
     }
 
-    if (inventory[i]['car_year'] >= year2){
-      newerCars.push(inventory[i]);
-    }
   }
   return olderCars;
-  return newerCars;
+  // return newerCars;
  
 }
 
@@ -302,11 +300,14 @@ function getGermanCars(arr) {
   
   for (let i = 0; i > arr.length; i++){
    
-    if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagon" || arr[i].car_make === "BMW"){
+    if (arr[i].car_make === "Audi" || arr[i].car_make === "Mercedes-Benz" || arr[i].car_make === "Volkswagen" || arr[i].car_make === "BMW"){
       deutschAuto.push(arr[i]);
     }
+
+   
   }
   return deutschAuto;
+ 
 }
 
 /**
