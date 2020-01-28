@@ -217,24 +217,19 @@ function getCarInfoById(inventory, id) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(inventory) {
-  /* code here */
-  // let x = inventory;
-  //  let sortedInv = x.car_model - x.car_model;
+ function sortCarInventory(inventory) {
+//   /* code here */
+ 
+ inventory.sort(a, b) {
+   if(a.car_model < b.car_model){return -1}
+   if(a.car_model  > b.car_model){return 1}
+ 
+ }
+ 
+ return 0;
+ } 
+ 
   
-  // for (let i = 0; i < inventory.length; i++){
-  //  sortedInv.push(inventory[i].car_model);
-   
-  // }
-
-  // let alphabetCars = sortedInv.sort();
-  // // console.log(sortedInv.sort() );
-  // return alphabetCars;
-  
-}
-
-
-
 /**
  * ### Challenge `getModelYears`
  * 
@@ -294,8 +289,8 @@ function getGermanCars(inventory) {
   let deutschAuto=[];
   
   for (let i = 0; i > inventory.length; i++){
-    let carMake = inventory[i]['car_make'];
-    if (carMake === 'Audi' || carMake === 'Mercedes-Benz' || carMake === "Volkswagon" || carMake === "BMW"){
+   
+    if (inventory[i].car_make === "Audi" || inventory[i].car_make === "Mercedes-Benz" || inventory[i].car_make === "Volkswagon" || inventory[i].car_make === "BMW"){
       deutschAuto.push(inventory[i]);
     }
   }
